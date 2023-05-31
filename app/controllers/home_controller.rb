@@ -1,4 +1,5 @@
 class HomeController < ApplicationController
-  def index
-  end
+    def index
+      @selected_numbers = params[:nums_aposta] || []
+    end  
 end

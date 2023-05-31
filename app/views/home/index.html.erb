@@ -1,19 +1,14 @@
-<div class="main">
-    <div class="t_explicativo_jogo">
-        <h1>Olá, este é o jogo da teimosinha!</h1>
-        <h3>Você faz uma aposta e o computador gera apostas até que os seus números sejam os sorteados.</h3>
-    </div>
+<h1>Escolha três números:</h1>
+<%= form_tag root_path, method: :get do %>
+  <%= select_tag 'nums_aposta[]', options_for_select((1..10).to_a) %>
+  <%= select_tag 'nums_aposta[]', options_for_select((1..10).to_a) %>
+  <%= select_tag 'nums_aposta[]', options_for_select((1..10).to_a) %>
+  <%= submit_tag 'Enviar' %>
+<% end %>
 
-    <div class="t_faça_aposta">
-        Faça sua aposta de 3 números distintos:
-    </div>
-    
-    <%= form_tag '/apostas', method: :post do %>
-    <%= select_tag 'numero1', options_for_select((1..10).to_a)%>
-    <%= select_tag 'numero2', options_for_select((1..10).to_a)%>
-    <%= select_tag 'numero3', options_for_select((1..10).to_a)%>
-    <%end%>
-</div>
+<% if @selected_numbers.present? %>
+  <h2>A sua aposta é:</h2>
+  
+    <%= @selected_numbers.join(", ") %>
 
-
-
+<% end %>
