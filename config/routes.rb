@@ -8,4 +8,5 @@ Rails.application.routes.draw do
   root "home#index"
 
   post '/apostas', to:"apostas#create"
+  get '/apostas', to: 'apostas#new'
 end

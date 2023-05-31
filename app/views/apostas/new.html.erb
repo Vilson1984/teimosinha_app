@@ -1,0 +1,15 @@
+<h1>Faça sua aposta</h1>
+<%= form_tag '/apostas', method: :post do %>
+  <%= label_tag 'numero1', 'Número 1' %>
+  <%= select_tag 'numero1', options_for_select((1..10).to_a) %>
+
+  <%= label_tag 'numero2', 'Número 2'%>
+  <%= select_tag 'numero2', options_for_select((1..10).to_a) %>
+
+  <%= label_tag 'numero3', 'Número 3'%>
+  <%= select_tag 'numero3', options_for_select((1..10).to_a) %>
+  
+  <br>
+  
+  <%= submit_tag 'Apostar'%>
+<%end%>
