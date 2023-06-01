@@ -6,9 +6,11 @@
   <%= submit_tag 'Enviar' %>
 <% end %>
 
-<% if @selected_numbers.present? %>
+<% if @aposta.present? %>
   <h2>A sua aposta é:</h2>
-  
-    <%= @selected_numbers.join(", ") %>
-
+    <%= @aposta.join(",") %>
 <% end %>
+
+<br><br>
+<h2> Os bilhetes premiados foram:</h2>
+<%= @bilhete_premiado %>
