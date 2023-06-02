@@ -1,16 +1,17 @@
 <h1>Escolha três números:</h1>
-<%= form_tag root_path, method: :get do %>
-  <%= select_tag 'nums_aposta[]', options_for_select((1..10).to_a) %>
-  <%= select_tag 'nums_aposta[]', options_for_select((1..10).to_a) %>
-  <%= select_tag 'nums_aposta[]', options_for_select((1..10).to_a) %>
-  <%= submit_tag 'Enviar' %>
+<%= form_tag root_path, method: :post do %>
+  <%= select_tag 'nums_array[]', options_for_select((1..10).to_a) %>
+  <%= select_tag 'nums_array[]', options_for_select((1..10).to_a) %>
+  <%= select_tag 'nums_array[]', options_for_select((1..10).to_a) %>
+  <%= submit_tag 'CONFIRMAR' %>
 <% end %>
 
-<% if @aposta.present? %>
+<% if @target_array.present? %>
   <h2>A sua aposta é:</h2>
-    <%= @aposta.join(",") %>
+    <%= @target_array.sort.join(",") %>
 <% end %>
 
-<br><br>
-<h2> Os bilhetes premiados foram:</h2>
-<%= @bilhete_premiado %>
+<h2>Resultados:</h2>
+<% @results.each do |result| %>
+  <p><%= result.sort.join(", ") %></p>
+<% end %>

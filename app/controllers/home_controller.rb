@@ -1,17 +1,11 @@
 class HomeController < ApplicationController
-    def index
-      @aposta = params[:nums_aposta] || []
-
-      sorteio
-    end  
-
-    def sorteio
-      @bilhete_premiado = []
-      
-      # SORTEIO NÚMEROS DO PC
-        @numeros_disp = (1..10)
-        @bilhete_premiado << @numeros_disp.sort.sample(3)
+  def index
+    @target_array = params[:nums_array]&.map(&:to_i) || []
+    @results = []
+    
+    until @results.last == @target_array || @results.length >= 1000
+      random_array = (1..10).to_a.sample(3)
+      @results << random_array
     end
-
- 
+  end
 end
