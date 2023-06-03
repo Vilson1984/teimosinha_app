@@ -1,17 +1,20 @@
 <h1>Escolha três números:</h1>
-<%= form_tag root_path, method: :post do %>
+<%= form_tag root_path, method: :get do %>
   <%= select_tag 'nums_array[]', options_for_select((1..10).to_a) %>
   <%= select_tag 'nums_array[]', options_for_select((1..10).to_a) %>
   <%= select_tag 'nums_array[]', options_for_select((1..10).to_a) %>
   <%= submit_tag 'CONFIRMAR' %>
 <% end %>
 
+ <h2>A sua aposta é:</h2>
 <% if @target_array.present? %>
-  <h2>A sua aposta é:</h2>
-    <%= @target_array.sort.join(",") %>
+     <%= @target_array.sort.join(",") %>
 <% end %>
 
 <h2>Resultados:</h2>
 <% @results.each do |result| %>
   <p><%= result.sort.join(", ") %></p>
 <% end %>
+
+<h2>Você ganhou na jogada:</h2>
+<%= @contador %>
