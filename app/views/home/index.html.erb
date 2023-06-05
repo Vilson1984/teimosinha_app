@@ -1,14 +1,15 @@
 <h1>Escolha três números:</h1>
 <%= form_tag root_path, method: :get do %>
-  <%= select_tag 'nums_array[]', options_for_select((1..10).to_a) %>
-  <%= select_tag 'nums_array[]', options_for_select((1..10).to_a) %>
-  <%= select_tag 'nums_array[]', options_for_select((1..10).to_a) %>
+  <%= select_tag 'nums_array[]', options_for_select((1..10).to_a, ""), include_blank: true %>
+  <%= select_tag 'nums_array[]', options_for_select((1..10).to_a, ""), include_blank: true %>
+  <%= select_tag 'nums_array[]', options_for_select((1..10).to_a, ""), include_blank: true %>
   <%= submit_tag 'CONFIRMAR' %>
 <% end %>
 
  <h2>A sua aposta é:</h2>
 <% if @target_array.present? %>
-     <%= @target_array.sort.join(",") %>
+    <!-- <%= @target_array.sort.join(",") %> -->
+    <%= @target_array %>
 <% end %>
 
 <h2>Resultados:</h2>
