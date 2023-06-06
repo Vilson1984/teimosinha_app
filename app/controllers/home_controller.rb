@@ -1,55 +1,25 @@
 class HomeController < ApplicationController
   def index
-    target_array
-    random_array_compara
+    f_aposta
+    f_sorteio
 
-    def initialize
-      @contador = 0 
-    end
-    #@target_array = params[:nums_array] || []
-    #@target_array = params[:nums_array]&.map(&:to_i) || []
-    #@results = []
-    #@contador = 0
-   # while @target_array != @random_array
-   #   @random_array = (1..10).to_a.sample(3)
-   #   @results << @random_array
-   # end
-
-
-  # loop do 
-  #  @contador += 1
-  #  @random_array = (1..10).to_a.sample(3)
-  #  @results << @random_array
-  #  
-  #  if @target_array == @random_array
-  #    break
-  #  end
-  # end
-
-  end
-
-  def target_array
-    @target_array = [1, 2, 3]
-    #@nums_array = params[:nums_array].split(",")
-  end
-
-
-
-
-  def random_array_compara
-    @results = []
-    @contador = 0
-    loop do 
-        
+    if @aposta_jogador.present?
+      @contador = 0
+      @jogadas = []
+      while @jogadas.none? { |jogada| jogada == @aposta_jogador } do
+        f_sorteio
+        @jogadas << @resultados.first
         @contador += 1
-        @random_array = (1..10).to_a.sample(3)
-        @results << @random_array
-        
-        if @target_array == @random_array
-          break
-        end
-       end
+      end
+    end
   end
 
+  def f_aposta
+    @aposta_jogador = params[:nums_array]&.map(&:to_i) || []
+  end
 
+  def f_sorteio
+    @resultados = [] 
+    @resultados << (1..10).to_a.sample(3)
+  end
 end

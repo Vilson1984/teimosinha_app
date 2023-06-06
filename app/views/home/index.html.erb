@@ -1,21 +1,33 @@
 <h1>Escolha três números:</h1>
 <%= form_tag root_path, method: :get do %>
-  <%= select_tag 'nums_array[]', options_for_select((1..10).to_a, ""), include_blank: true %>
-  <%= select_tag 'nums_array[]', options_for_select((1..10).to_a, ""), include_blank: true %>
-  <%= select_tag 'nums_array[]', options_for_select((1..10).to_a, ""), include_blank: true %>
+  <%= select_tag 'nums_array[]', options_for_select((1..10).to_a) %>
+  <%= select_tag 'nums_array[]', options_for_select((1..10).to_a) %>
+  <%= select_tag 'nums_array[]', options_for_select((1..10).to_a) %>
   <%= submit_tag 'CONFIRMAR' %>
 <% end %>
 
- <h2>A sua aposta é:</h2>
-<% if @target_array.present? %>
-    <!-- <%= @target_array.sort.join(",") %> -->
-    <%= @target_array %>
+<h2>A sua aposta é:</h2>
+<%= @aposta_jogador.sort.to_a %>
+
+
+<h2>Resultados:</h2>
+<% @resultados.each do |jogada| %>
+  <%= jogada.sort.to_a %><br>
 <% end %>
 
 <h2>Resultados:</h2>
-<% @results.each do |result| %>
-  <p><%= result.sort.join(", ") %></p>
+<% @jogadas.each_with_index do |jogada, index| %>
+  <%= jogada.sort.to_a %><br>
+  <% if jogada == @aposta_jogador %>
+    <h3>Resultado encontrado na jogada <%= index + 1 %>!</h3>
+    <% break %>
+  <% end %>
 <% end %>
 
+
 <h2>Você ganhou na jogada:</h2>
-<%= @contador %>
+<% if @resultados.include?(@aposta_jogador) %>
+  <%= @resultados.index(@aposta_jogador) + 1 %>
+<% else %>
+  Jogadas não correspondem à aposta.
+<% end %>
