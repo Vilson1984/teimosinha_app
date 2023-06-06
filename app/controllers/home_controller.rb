@@ -6,10 +6,19 @@ class HomeController < ApplicationController
     if @aposta_jogador.present?
       @contador = 0
       @jogadas = []
-      while @jogadas.none? { |jogada| jogada == @aposta_jogador } do
+      @resultado_jogada = nil
+
+      while @resultado_jogada.nil? do
         f_sorteio
         @jogadas << @resultados.first
         @contador += 1
+
+        @jogadas.each_with_index do |jogada, index|
+          if jogada.sort == @aposta_jogador.sort
+            @resultado_jogada = index + 1
+            break
+          end
+        end
       end
     end
   end

@@ -9,11 +9,13 @@
 <h2>A sua aposta é:</h2>
 <%= @aposta_jogador.sort.to_a %>
 
-
-<h2>Resultados:</h2>
-<% @resultados.each do |jogada| %>
-  <%= jogada.sort.to_a %><br>
+<h2>Você ganhou na jogada:</h2>
+<% if @resultado_jogada.present? %>
+  <%= @resultado_jogada %>
+<% else %>
+  Jogadas não correspondem à aposta.
 <% end %>
+
 
 <h2>Resultados:</h2>
 <% @jogadas.each_with_index do |jogada, index| %>
@@ -22,12 +24,4 @@
     <h3>Resultado encontrado na jogada <%= index + 1 %>!</h3>
     <% break %>
   <% end %>
-<% end %>
-
-
-<h2>Você ganhou na jogada:</h2>
-<% if @resultados.include?(@aposta_jogador) %>
-  <%= @resultados.index(@aposta_jogador) + 1 %>
-<% else %>
-  Jogadas não correspondem à aposta.
 <% end %>
