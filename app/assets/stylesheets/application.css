@@ -13,3 +13,117 @@
  *= require_tree .
  *= require_self
  */
+body{
+    background: color #f0ffff;;
+    color: #f0ffff;
+}
+
+.principal{
+    background-color: #9ca5b3;
+    border: #000000 solid 1px;
+    border-radius: 20px;
+    width: 50%;
+    padding: 10px;
+}
+
+.explicativo{
+    background-color: #000000;
+    height: 100px;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    font-family: monospace;
+}
+
+.txt_explicativo{
+    position: relative;
+    top: -20px;
+}
+
+.escolha_num{
+    background-color: #000000;
+    height: 100px;
+}
+
+.txt_selects{
+  position: relative;
+  top: 10px;
+}
+
+input[type="submit"]{
+    background-color: #e46a06;
+    border-radius: 10px;
+    width: 120px;
+}
+
+.aposta{
+    background-color: #000000;
+    height: 92px;  
+}
+
+.txt_escolha{
+    font-weight: bold;
+    border-bottom: 1px solid #9ca5b3;
+    width: 80%;
+    height: 40px;
+
+}
+
+.aposta_num_aposta{
+    position: relative;
+    top: 10px;
+}
+
+.aposta_num{
+    font-weight: bold;
+    font-size: 26px;
+    padding: 5px;
+    position: relative;
+    top: -10px;
+    border-top: 1px solid #9ca5b3;
+    width: 80%;
+    color: #e46a06;
+}
+
+.premio{
+    background-color: #000000;
+    height: 95px;  
+}
+
+.premio_conteudo{
+    position: relative;
+    top: 10px;
+}
+
+.premio_conteudo_nºjogada{
+    border-bottom: 1px solid #9ca5b3;
+    width: 80%;
+    height: 40px;
+}
+
+.premio_txt_valorgasto{
+    position: relative;
+    top: -10px;
+    color:#e46a06;
+  }
+
+.resultados{
+    background-color: #000000;
+    height: auto;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px ;
+}
+
+.resultados_txt{
+    position: relative;
+    top: 10px;
+    border-bottom: 1px solid #9ca5b3;
+    width: 80%;
+    height: 40px;
+}
+
+.resultados_jogadas{
+    position: inherit;
+    padding: 20px;
+    top: 25px;
+    height: auto;
+}

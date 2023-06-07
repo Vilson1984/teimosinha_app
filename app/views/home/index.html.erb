@@ -1,23 +1,59 @@
-<h1>Escolha três números:</h1>
+<center>
+<div class="principal">
+
+<div class="explicativo">
+  <div class="txt_explicativo">
+    <br><b><h3> Olá Jogador!</h3></b>
+        Considere a sua APOSTA 3 números distintos entre si, dentre 1 a 10.
+    <br>O computador gerará uma série de resultados, até que vc seja sorteado.  
+    <br>Por favor, faça a sua aposta! E veja quantas jogadas seriam necessárias para que vc vencesse!
+  </div>
+</div>
+
+<div class="escolha_num">
+<div class="txt_selects">
+<div class="txt_escolha">
+<h2>Escolha três números:</h2>
+</div><br>
 <%= form_tag root_path, method: :get do %>
-  <%= select_tag 'nums_array[]', options_for_select((1..10).to_a) %>
-  <%= select_tag 'nums_array[]', options_for_select((1..10).to_a) %>
-  <%= select_tag 'nums_array[]', options_for_select((1..10).to_a) %>
+  <%= select_tag 'nums_array[]', options_for_select((1..10).to_a, ""), include_blank:true %>
+  <%= select_tag 'nums_array[]', options_for_select((1..10).to_a, ""), include_blank:true %>
+  <%= select_tag 'nums_array[]', options_for_select((1..10).to_a, ""), include_blank:true %>
   <%= submit_tag 'CONFIRMAR' %>
 <% end %>
+</div>
+</div>
 
+<div class = "aposta">
+<div class = "aposta_num_aposta">
 <h2>A sua aposta é:</h2>
+<div class = "aposta_num">
 <%= @aposta_jogador.sort.to_a %>
+</div>
+</div>
+</div>
 
-<h2>Você ganhou na jogada:</h2>
+<div class = "premio">
+<div class = "premio_conteudo">
+<div class = "premio_conteudo_nºjogada">
+<h2>Você teria ganho na <%= @resultado_jogada %>ª jogada. 
 <% if @resultado_jogada.present? %>
-  <%= @resultado_jogada %>
+  </h2>
 <% else %>
   Jogadas não correspondem à aposta.
 <% end %>
+</div>
+<div class = "premio_txt_valorgasto">
+<h2> E Teria gasto <%=@resultado_jogada * 5%> reais.</h2>
+</div>
+</div>
+</div>
 
-
+<div class = "resultados">
+<div class = "resultados_txt">
 <h2>Resultados:</h2>
+</div>
+<div class = "resultados_jogadas">
 <% @jogadas.each_with_index do |jogada, index| %>
   <%= jogada.sort.to_a %><br>
   <% if jogada == @aposta_jogador %>
@@ -25,3 +61,7 @@
     <% break %>
   <% end %>
 <% end %>
+</div>
+</div>
+</div>
+</center>
