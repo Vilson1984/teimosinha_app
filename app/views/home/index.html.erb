@@ -33,21 +33,21 @@
     <h2>A sua aposta é:</h2>
     </div><br>
     <div class = "bet_number">
-    <h2><%= @aposta_jogador.sort.to_a %></h2>
+    <h2><%= @bet_player.sort.to_a %></h2>
     </div>
   </div><br>
   
   
     <div class = "prize">
       <div class = "prize_n_play">
-        <h2>Você teria ganho na <%= @resultado_jogada %>ª jogada. 
-          <% if @resultado_jogada.present? %> </h2>
+        <h2>Você teria ganho na <%= @result_play %>ª jogada. 
+          <% if @result_play.present? %> </h2>
         <% else %>
           
         <% end %>
       </div>
       <div class = "value_play">
-        <h2> E Teria gasto <%=@resultado_jogada.nil? ? '' :@resultado_jogada*5%> reais.</h2>
+        <h2> E Teria gasto <%=@result_play.nil? ? '' :@result_play*5%> reais.</h2>
       </div>
     </div><br>
   
@@ -57,10 +57,10 @@
       <h2>Resultados:</h2>
     </div>
     <div class = "results_play">
-      <% if @jogadas.present? %>
-        <% @jogadas.each_with_index do |jogada, index| %>
-          <%= jogada.sort.to_a %><br>
-          <% if jogada == @aposta_jogador %>
+      <% if @plays.present? %>
+        <% @plays.each_with_index do |play, index| %>
+          <%= play.sort.to_a %><br>
+          <% if play == @bet_player %>
             <h3>Resultado encontrado na jogada <%= index + 1 %>!</h3>
             <% break %>
           <% end %>

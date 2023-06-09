@@ -1,21 +1,21 @@
 class HomeController < ApplicationController
   def index
-    f_aposta
-    f_sorteio
+    f_bet
+    f_raffle
 
-    if @aposta_jogador.present?
-      @contador = 0
-      @jogadas = []
-      @resultado_jogada = nil
+    if @bet_player.present?
+      @count = 0
+      @plays = []
+      @result_play = nil
 
-      while @resultado_jogada.nil? do
-        f_sorteio
-        @jogadas << @resultados.first
-        @contador += 1
+      while @result_play.nil? do
+        f_raffle
+        @plays << @results.first
+        @count += 1
 
-        @jogadas.each_with_index do |jogada, index|
-          if jogada.sort == @aposta_jogador.sort
-            @resultado_jogada = index + 1
+        @plays.each_with_index do |play, index|
+          if play.sort == @bet_player.sort
+            @result_play = index + 1
             break
           end
         end
@@ -23,12 +23,12 @@ class HomeController < ApplicationController
     end
   end
 
-  def f_aposta
-    @aposta_jogador = params[:nums_array]&.map(&:to_i) || []
+  def f_bet
+    @bet_player = params[:nums_array]&.map(&:to_i) || []
   end
 
-  def f_sorteio
-    @resultados = [] 
-    @resultados << (1..10).to_a.sample(3)
+  def f_raffle
+    @results = [] 
+    @results << (1..10).to_a.sample(3)
   end
 end
