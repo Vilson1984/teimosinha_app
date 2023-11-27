@@ -1,4 +1,4 @@
-# Teimosinha Game em Ruby on Rails
+# Teimosinha Game em Ruby on Rails 🎲🎲🎲...💸💸💸💸💸💸💸💸...💰💰💰
 
 Este é um aplicativo simples em Ruby on Rails que simula um jogo da Mega Sena, onde o jogador aposta 3 números, e o computador gera apostas aleatórias até que a aposta seja igual ao bilhete premiado.
 
